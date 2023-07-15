@@ -1,10 +1,13 @@
 <?php
 
-/*
- * You can place your custom package configuration in here.
- */
+use Hareland\LaravelFormSubmissions\Models\Form;
+
 return [
     'support' => [
         'files' => false,
+    ],
+
+    'models' => [
+        'form' => Form::class,
     ]
 ];
