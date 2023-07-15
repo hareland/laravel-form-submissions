@@ -21,8 +21,8 @@ class FormSubmission extends Model
         'submissable_id',//morph|id
         'submissable_type',//morph|class
         'data',//json|nullable
-        'created_at',//timestamps|
-        'updated_at',//timestamps|
+        'created_at',//timestamps
+        'updated_at',//timestamps
     ];
 
     protected static function boot()
