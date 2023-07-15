@@ -1,0 +1,52 @@
+{
+    "name": "hareland/laravel-form-submissions",
+    "description": "",
+    "keywords": [
+        "hareland",
+        "laravel-form-submissions"
+    ],
+    "homepage": "https://github.com/hareland/laravel-form-submissions",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "K Hareland",
+            "email": "packagist@proton.me",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0",
+        "illuminate/support": "^10",
+        "illuminate/database": "^10"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^8.0",
+        "phpunit/phpunit": "^10.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Hareland\\LaravelFormSubmissions\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Hareland\\LaravelFormSubmissions\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Hareland\\LaravelFormSubmissions\\LaravelFormSubmissionsServiceProvider"
+            ]
+        }
+    }
+}
