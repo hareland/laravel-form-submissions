@@ -16,12 +16,17 @@ class CreateFormsTables extends Migration
             $table->id();
             $table->uuid('uuid')->unique();
             $table->morphs('owner');
+            $table->string('status')->default('draft');
+            $table->string('redirect')->nullable();
             $table->string('forward_to_email')->nullable();
             $table->boolean('wildcard_submission')->default(false);
             $table->boolean('force_validation')->default(false);
             $table->json('validation_rules')->nullable();
             $table->json('rules')->nullable();
             $table->json('submission_rules')->nullable();
+            $table->json('pages')->nullable();
+            $table->json('closed_page')->nullable();
+            $table->json('thank_you_page')->nullable();
             $table->timestamps();
         });
 

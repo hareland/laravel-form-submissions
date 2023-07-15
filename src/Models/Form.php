@@ -21,12 +21,17 @@ class Form extends Model
         'uuid', // uuid|unique
         'owner_id', // morphs
         'owner_type', // morphs
+        'status',//string|default:draft
+        'redirect',//string|nullable|default:null
         'forward_to_email', //string|nullable (IF Not NULL: Forward to provided email)
         'wildcard_submission',//boolean|default:false
         'force_validation', //boolean|default:false
         'validation_rules', //json|nullable|default:null
         'rules', //json|nullable|default:null
         'submission_rules', //json|nullable|default:null
+        'pages', //json|nullable|default:null
+        'closed_page',//json|nullable|default:null
+        'thank_you_page', //json|nullable|default:null
     ];
 
     protected static function boot()
