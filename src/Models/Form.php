@@ -3,6 +3,7 @@
 namespace Hareland\LaravelFormSubmissions\Models;
 
 use Hareland\LaravelFormSubmissions\Concerns\HasFormSubmissions;
+use Hareland\LaravelFormSubmissions\Concerns\HasUuid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
@@ -11,7 +12,9 @@ use Illuminate\Support\Str;
 
 class Form extends Model
 {
-    use HasFactory;
+    use HasUuid;
+
+//    use HasFactory;
     use HasFormSubmissions;
 
     protected $table = 'form_sub__forms';
@@ -33,18 +36,6 @@ class Form extends Model
         'closed_page',//json|nullable|default:null
         'thank_you_page', //json|nullable|default:null
     ];
-
-    protected static function boot()
-    {
-        parent::boot();
-        static::creating(function (Model $model) {
-            if (empty($model->uuid)) {
-                $model::unguard();
-                $model->setAttribute('uuid', Str::uuid()->toString());
-                $model::reguard();
-            }
-        });
-    }
 
     public function owner(): MorphTo
     {

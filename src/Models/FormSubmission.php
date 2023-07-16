@@ -3,6 +3,7 @@
 namespace Hareland\LaravelFormSubmissions\Models;
 
 use Hareland\LaravelFormSubmissions\Concerns\BelongsToForm;
+use Hareland\LaravelFormSubmissions\Concerns\HasUuid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
@@ -11,8 +12,11 @@ use Illuminate\Support\Str;
 
 class FormSubmission extends Model
 {
-    use HasFactory;
+    use HasUuid;
+
+//    use HasFactory;
     use BelongsToForm;
+
     protected $table = 'form_sub__submissions';
 
     protected $fillable = [
@@ -25,15 +29,8 @@ class FormSubmission extends Model
         'updated_at',//timestamps
     ];
 
-    protected static function boot()
-    {
-        parent::boot();
-        static::creating(function (Model $model) {
-            if (empty($model->uuid)) {
-                $model::unguard();
-                $model->setAttribute('uuid', Str::uuid()->toString());
-                $model::reguard();
-            }
-        });
-    }
+    protected $casts = [
+        'data' => 'array',
+    ];
+
 }

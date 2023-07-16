@@ -1,6 +1,7 @@
 <?php
 
 use Hareland\LaravelFormSubmissions\Models\Form;
+use Hareland\LaravelFormSubmissions\Models\FormSubmission;
 
 return [
     'support' => [
@@ -9,5 +10,6 @@ return [
 
     'models' => [
         'form' => Form::class,
+        'submission' => FormSubmission::class,
     ]
 ];
