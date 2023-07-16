@@ -42,7 +42,7 @@ If you discover any security related issues, please email packagist@proton.me in
 
 ## Credits
 
--   [K Hareland](https://github.com/hareland)
+-   [hareland](https://github.com/hareland)
 
 ## License
 
