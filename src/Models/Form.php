@@ -37,6 +37,16 @@ class Form extends Model
         'thank_you_page', //json|nullable|default:null
     ];
 
+    protected $casts = [
+        'validation_rules' => 'array',
+        'submission_rules' => 'array',
+        'rules' => 'array',
+        'pages' => 'array',
+        'closed_page' => 'array',
+        'thank_you_page' => 'array',
+        'force_validation' => 'bool',
+    ];
+
     public function owner(): MorphTo
     {
         return $this->morphTo('owner');
