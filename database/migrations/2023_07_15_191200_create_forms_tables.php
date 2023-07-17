@@ -27,7 +27,7 @@ class CreateFormsTables extends Migration
             $table->json('pages')->nullable();
             $table->json('closed_page')->nullable();
             $table->json('thank_you_page')->nullable();
-            $table->string('g_recaptcha_secret_key')->nullable();
+            $table->string('captcha_secret_key')->nullable();
             $table->timestamps();
         });
 

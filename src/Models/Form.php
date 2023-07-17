@@ -10,6 +10,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Support\Facades\Crypt;
+
 
 /**
  * @property int $id
@@ -27,7 +30,8 @@ use Illuminate\Support\Str;
  * @property array|null $pages
  * @property array|null $closed_page
  * @property array|null $thank_you_page
- * @property string|null $g_recaptcha_secret_key
+ * @property string|null $captcha_secret_key
+ * @property string|null $captchaSecret
  */
 class Form extends Model
 {
@@ -54,7 +58,7 @@ class Form extends Model
         'pages', //json|nullable|default:null
         'closed_page',//json|nullable|default:null
         'thank_you_page', //json|nullable|default:null
-        'g_recaptcha_secret_key', //string|nullable|default:null
+        'captcha_secret_key', //string|nullable|default:null
     ];
 
     protected $casts = [
@@ -85,7 +89,15 @@ class Form extends Model
 
     public function isCaptchaEnabled(): bool
     {
-        return $this->g_recaptcha_secret_key !== null;
+        return $this->captcha_secret_key !== null;
+    }
+
+    public function captchaSecret(): Attribute
+    {
+        return Attribute::make(
+            get: fn(?string $value) => Crypt::decrypt($value),
+            set: fn(?string $value) => Crypt::encrypt($value),
+        );
     }
 
 }
