@@ -27,6 +27,7 @@ use Illuminate\Support\Str;
  * @property array|null $pages
  * @property array|null $closed_page
  * @property array|null $thank_you_page
+ * @property string|null $g_recaptcha_secret_key
  */
 class Form extends Model
 {
@@ -53,6 +54,7 @@ class Form extends Model
         'pages', //json|nullable|default:null
         'closed_page',//json|nullable|default:null
         'thank_you_page', //json|nullable|default:null
+        'g_recaptcha_secret_key', //string|nullable|default:null
     ];
 
     protected $casts = [
@@ -67,8 +69,23 @@ class Form extends Model
         'status' => FormStatus::class,
     ];
 
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
+    protected $hidden = [
+        'g_recaptcha_secret_key',
+    ];
+
     public function owner(): MorphTo
     {
         return $this->morphTo('owner');
     }
+
+    public function isCaptchaEnabled(): bool
+    {
+        return $this->g_recaptcha_secret_key !== null;
+    }
+
 }
