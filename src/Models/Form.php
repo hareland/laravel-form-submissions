@@ -79,7 +79,7 @@ class Form extends Model
      * @var array<int, string>
      */
     protected $hidden = [
-        'g_recaptcha_secret_key',
+        'captcha_secret_key',
     ];
 
     public function owner(): MorphTo
@@ -99,5 +99,4 @@ class Form extends Model
             set: fn(?string $value) => Crypt::encrypt($value),
         );
     }
-
 }
