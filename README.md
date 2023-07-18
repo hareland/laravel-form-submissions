@@ -2,7 +2,6 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/hareland/laravel-form-submissions.svg?style=flat-square)](https://packagist.org/packages/hareland/laravel-form-submissions)
 [![Total Downloads](https://img.shields.io/packagist/dt/hareland/laravel-form-submissions.svg?style=flat-square)](https://packagist.org/packages/hareland/laravel-form-submissions)
-[//]: # ![GitHub Actions](https://github.com/hareland/laravel-form-submissions/actions/workflows/main.yml/badge.svg)
 
 This package is intended for internal use, if people start using it i'll update this!
 
