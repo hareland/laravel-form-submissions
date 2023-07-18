@@ -30,8 +30,7 @@ use Illuminate\Support\Facades\Crypt;
  * @property array|null $pages
  * @property array|null $closed_page
  * @property array|null $thank_you_page
-// * @property string|null $captcha_secret_key
- * @property string|null $captchaSecret
+ * @property string|null $captcha_secret_key
  */
 class Form extends Model
 {
@@ -90,20 +89,5 @@ class Form extends Model
     public function isCaptchaEnabled(): bool
     {
         return $this->captcha_secret_key !== null;
-    }
-
-    public function captchaSecret(): Attribute
-    {
-        return Attribute::make(
-            get: fn(mixed $value, array $attributes) => Crypt::decrypt(
-                $attributes['captcha_secret_key'],
-            ),
-            set: fn(?string $value) => [
-                'captcha_secret_key' =>
-                    is_null($value)
-                        ? $value
-                        : Crypt::encrypt($value),
-            ],
-        );
     }
 }
